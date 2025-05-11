@@ -2,38 +2,38 @@ import requests
 from bs4 import BeautifulSoup
 
 from api import bot
-
+base_url = "https://starvisor.ru"
 
 city_map = {
-    "Азеево": "https://starvisor.ru/azv/", 
-    "Айхал": "https://starvisor.ru/ayk/",
-    "Альметьевск": "https://starvisor.ru/almet/",
-    "Васкелово": "https://starvisor.ru/spbd/",
-    "Багдарин": "https://starvisor.ru/bag/",
-    "Березники": "https://starvisor.ru/brz/",
-    "Вологда": "https://starvisor.ru/vlg/",
-    "Гулькевичи": "https://starvisor.ru/gul/",
-    "Воркута": "https://starvisor.ru/vrk/",
-    "Провидения": "https://starvisor.ru/prv/",
-    "Ирбит": "https://starvisor.ru/irb/",
-    "Калининград": "https://starvisor.ru/kln/",
-    "Калуга": "https://starvisor.ru/klg/",
-    "Каменск-Уральский": "https://starvisor.ru/kur/", 
-    "Краснодар": "https://starvisor.ru/nov/",
-    "Москва": "https://starvisor.ru/msc/",
-    "Остроленский": "https://starvisor.ru/ost/",
-    "Пермь": "https://starvisor.ru/prm/",
-    "Попово": "https://starvisor.ru/ppv/",
-    "Пятиречье": "https://starvisor.ru/ptr/",
-    "Русское": "https://starvisor.ru/rus/",
-    "Рязань": "https://starvisor.ru/rzn/",
-    "Стрежевой": "https://starvisor.ru/str/",
-    "Тула": "https://starvisor.ru/tula/",
-    "Уткино": "https://starvisor.ru/utk/",
-    "Челябинск": "https://starvisor.ru/chb/",
-    "Юрга": "https://starvisor.ru/yur/",
-    "Ярославль": "https://starvisor.ru/yar/", 
-    "Тырнауз": "https://gw.cmo.sai.msu.ru/webcam6.jpg"
+    "Азеево": f"{base_url}/azv/", 
+    "Айхал": f"{base_url}/ayk/",
+    "Альметьевск": f"{base_url}/almet/",
+    "Васкелово": f"{base_url}/spbd/",
+    "Багдарин": f"{base_url}/bag/",
+    "Березники": f"{base_url}/brz/",
+    "Вологда": f"{base_url}/vlg/",
+    "Гулькевичи": f"{base_url}/gul/",
+    "Воркута": f"{base_url}/vrk/",
+    "Провидения": f"{base_url}/prv/",
+    "Ирбит": f"{base_url}/irb/",
+    "Калининград": f"{base_url}/kln/",
+    "Калуга": f"{base_url}/klg/",
+    "Каменск-Уральский": f"{base_url}/kur/", 
+    "Краснодар": f"{base_url}/nov/",
+    "Москва": f"{base_url}/msc/",
+    "Остроленский": f"{base_url}/ost/",
+    "Пермь": f"{base_url}/prm/",
+    "Попово": f"{base_url}/ppv/",
+    "Пятиречье": f"{base_url}/ptr/",
+    "Русское": f"{base_url}/rus/",
+    "Рязань": f"{base_url}/rzn/",
+    "Стрежевой": f"{base_url}/str/",
+    "Тула": f"{base_url}/tula/",
+    "Уткино": f"{base_url}/utk/",
+    "Челябинск": f"{base_url}/chb/",
+    "Юрга": f"{base_url}/yur/",
+    "Ярославль": f"{base_url}/yar/", 
+    "Тырнауз": f"https://gw.cmo.sai.msu.ru/webcam6.jpg"
 }
 
 def get_camera_image(city):
@@ -57,5 +57,5 @@ def get_camera_image(city):
 def send_image_to_telegram(image_bytes, id):
     try:
         bot.send_photo(id, photo=image_bytes)
-    except:
-        print("хуй")
+    except e:
+        print(f"Error: Could not send photo to {i}. Further details:\n{e}")
